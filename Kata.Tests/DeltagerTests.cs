@@ -30,30 +30,26 @@ namespace Kata.Tests
             sut.City.Should().Be(positiveResult);
         }
         [Fact]
-        public void ParticipantsNameCanBeNull()
+        public void ParticipantsNameMustNoteNull()
         {
             // Arrange
             var sut = new Participant();
             string positiveResult = null;
 
-            // Act
-            sut.Name = positiveResult;
 
-            // Assert
-            sut.Name.Should().Be(positiveResult);
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
         }
         [Fact]
-        public void ParticipantsNameCanBeEmpty()
+        public void ParticipantsNameMustNotBeEmpty()
         {
             // Arrange
             var sut = new Participant();
             string positiveResult = string.Empty;
 
-            // Act
-            sut.Name = positiveResult;
 
-            // Assert
-            sut.Name.Should().Be(positiveResult);
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
         }
     }
 }
