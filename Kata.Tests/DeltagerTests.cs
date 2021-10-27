@@ -93,7 +93,30 @@ namespace Kata.Tests
             Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
         }
 
+        [Theory]
+        [InlineData("Navn", "Navn")]
+        [InlineData("navn", "Navn")]
+        [InlineData("nAvn", "Navn")]
+        [InlineData("Navn Mellemnavn", "Navn Mellemnavn")]
+        [InlineData("navn mellemnavn", "Navn Mellemnavn")]
+        [InlineData("navn-mellemnavn", "Navn-Mellemnavn")]
+        [InlineData("NAVN", "Navn")]
+        [InlineData("NAVN MELLEMNAVN", "Navn Mellemnavn")]
+        [InlineData("NAVN-MELLEMNAVN", "Navn-Mellemnavn")]
+        [InlineData("NAVN-MELLEMNAVN", "Navn-Mellemnavn")]
+        [Trait("Category", "Name")]
+        public void ParticipantNameFirstCharcterChangeToUpper(string testName, string expecedResult)
+        {
+            // Arrange
+            var sut = new Participant();
 
-       
+            // Act
+            sut.Name = testName;
+
+            // Assert
+            Assert.Equal(sut.Name,expecedResult);
+        }
+
+
     }
 }
