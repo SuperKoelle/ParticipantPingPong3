@@ -1,4 +1,7 @@
-﻿namespace Kata
+﻿using System;
+using System.Text.RegularExpressions;
+
+namespace Kata
 {
     public class Participant
     {
@@ -26,7 +29,16 @@
         public string City
         {
             get { return city; }
-            set { city = value; }
+            set { 
+                    if (Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+                    {
+                    city = value; 
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Vejle can only acce");
+                    }
+                }
         }
 
 
