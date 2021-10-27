@@ -30,6 +30,19 @@ namespace Kata.Tests
             sut.City.Should().Be(positiveResult);
         }
         [Fact]
+        public void ParticipantsNameValid()
+        {
+            // Arrange
+            var sut = new Participant();
+            var positiveResult = "Jens";
+
+            // Act
+            sut.Name = positiveResult;
+
+            // Assert
+            sut.Name.Should().Be(positiveResult);
+        }
+        [Fact]
         public void ParticipantsNameMustNoteNull()
         {
             // Arrange
@@ -47,6 +60,25 @@ namespace Kata.Tests
             var sut = new Participant();
             string positiveResult = string.Empty;
 
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
+        }
+        [Fact]
+        public void ParticipantNameThrowsExceptionIfContainsDigits()
+        {
+            // Arrange
+            var sut = new Participant();
+            string positiveResult = "Jens 1";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
+        }
+        [Fact]
+        public void ParticipantNameThrowsExceptionIfContainsSymbols()
+        {
+            // Arrange
+            var sut = new Participant();
+            string positiveResult = "Jens #";
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
