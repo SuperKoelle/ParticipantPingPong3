@@ -59,7 +59,17 @@ namespace Kata
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set {
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Name cannot be null or empty");
+                }
+            }
         }
 
     }
