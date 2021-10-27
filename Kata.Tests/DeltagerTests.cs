@@ -1,4 +1,5 @@
 using FluentAssertions;
+using System;
 using Xunit;
 
 namespace Kata.Tests
@@ -11,6 +12,19 @@ namespace Kata.Tests
             // Arrange
             var sut = new Participant();
             var positiveResult = "#¤%";
+
+            // Act
+            sut.City = positiveResult;
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => sut.City = positiveResult);
+        }
+        [Fact]
+        public void ParticipantsCityValid()
+        {
+            // Arrange
+            var sut = new Participant();
+            var positiveResult = "Vejle";
 
             // Act
             sut.City = positiveResult;
