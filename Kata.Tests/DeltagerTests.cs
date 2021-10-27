@@ -7,6 +7,7 @@ namespace Kata.Tests
     public class ParticipantsTests
     {
         [Fact]
+        [Trait("Category", "City")]
         public void ParticipantsCitySymbols()
         {
             // Arrange
@@ -17,6 +18,7 @@ namespace Kata.Tests
             Assert.Throws<ArgumentException>(() => sut.City = positiveResult);
         }
         [Fact]
+        [Trait("Category", "City")]
         public void ParticipantsCityValid()
         {
             // Arrange
@@ -30,6 +32,7 @@ namespace Kata.Tests
             sut.City.Should().Be(positiveResult);
         }
         [Fact]
+        [Trait("Category", "Name")]
         public void ParticipantsNameValid()
         {
             // Arrange
@@ -43,6 +46,7 @@ namespace Kata.Tests
             sut.Name.Should().Be(positiveResult);
         }
         [Fact]
+        [Trait("Category", "Name")]
         public void ParticipantsNameMustNoteNull()
         {
             // Arrange
@@ -54,6 +58,8 @@ namespace Kata.Tests
             Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
         }
         [Fact]
+        [Trait("Category", "Name")]
+
         public void ParticipantsNameMustNotBeEmpty()
         {
             // Arrange
@@ -64,6 +70,8 @@ namespace Kata.Tests
             Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
         }
         [Fact]
+        [Trait("Category", "Name")]
+
         public void ParticipantNameThrowsExceptionIfContainsDigits()
         {
             // Arrange
@@ -73,7 +81,8 @@ namespace Kata.Tests
             // Act & Assert
             Assert.Throws<ArgumentException>(() => sut.Name = positiveResult);
         }
-        [Fact]
+        [Trait("Category", "Name")]
+
         public void ParticipantNameThrowsExceptionIfContainsSymbols()
         {
             // Arrange
