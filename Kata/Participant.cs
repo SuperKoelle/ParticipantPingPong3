@@ -63,12 +63,21 @@ namespace Kata
 
                 if (!string.IsNullOrEmpty(value))
                 {
-                    name = value;
+                    if (Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+                    {
+                        name = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Name cannot be didgets or special characters");
+                    }
+                    
                 }
                 else
                 {
                     throw new ArgumentException("Name cannot be null or empty");
                 }
+
             }
         }
 
