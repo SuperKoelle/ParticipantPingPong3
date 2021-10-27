@@ -29,5 +29,31 @@ namespace Kata.Tests
             // Assert
             sut.City.Should().Be(positiveResult);
         }
+        [Fact]
+        public void ParticipantsNameCanBeNull()
+        {
+            // Arrange
+            var sut = new Participant();
+            string positiveResult = null;
+
+            // Act
+            sut.Name = positiveResult;
+
+            // Assert
+            sut.Name.Should().Be(positiveResult);
+        }
+        [Fact]
+        public void ParticipantsNameCanBeEmpty()
+        {
+            // Arrange
+            var sut = new Participant();
+            string positiveResult = string.Empty;
+
+            // Act
+            sut.Name = positiveResult;
+
+            // Assert
+            sut.Name.Should().Be(positiveResult);
+        }
     }
 }
